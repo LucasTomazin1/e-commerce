@@ -1,12 +1,39 @@
+import { useState, ChangeEvent, useContext } from "react";
+import styled from "styled-components";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import styled from "styled-components";
+import { SearchContext } from "../contexts/SearchContext";
 
 export const SearchBar: React.FC = () => {
+  const [search, setSearch] = useState("");
+  const { setQuery } = useContext(SearchContext);
+
+  const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value);
+  };
+
+  const onClickHandler = () => {
+    if (search !== "") {
+      setQuery(search);
+    }
+  };
+
+  const onEnterHandler = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      if (search !== "") {
+        setQuery(search);
+      }
+    }
+  };
+
   return (
     <Container>
-      <Input placeholder="O que você procura?" />
-      <Button>
+      <Input
+        placeholder="O que você procura?"
+        onChange={onChangeHandler}
+        onKeyPress={onEnterHandler}
+      />
+      <Button onClick={onClickHandler}>
         <FontAwesomeIcon icon={faMagnifyingGlass} />
       </Button>
     </Container>

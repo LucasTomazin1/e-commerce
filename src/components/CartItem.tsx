@@ -34,6 +34,7 @@ export const CartItem: React.FC<CartItemProps> = ({ product, quantity }) => {
       handleRemoveFromCart();
     }
   };
+  console.log(product);
 
   return (
     <Container>
@@ -42,6 +43,7 @@ export const CartItem: React.FC<CartItemProps> = ({ product, quantity }) => {
         <h3>{product.title}</h3>
         <FlexDetails>
           <p>R$ {product.price.toFixed(2)}</p>
+          <p>Total: R$ {(product.price * quantity).toFixed(2)}</p>
           <QuantityContainer>
             <SmallButton onClick={handleDecreaseQuantity}>-</SmallButton>
             <p>{quantity}</p>
@@ -84,7 +86,7 @@ const ItemDetails = styled.div`
 const FlexDetails = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
   margin-top: auto;
 
   p {
@@ -98,8 +100,8 @@ const QuantityContainer = styled.div`
   align-items: center;
   text-align: center;
   gap: 1rem;
-  background-color: rgba(0, 0, 0, 0.3);
-  border-radius: 1rem;
+  border: solid 1px #242424;
+  border-radius: 2rem;
 
   p {
     margin: 0;
@@ -109,6 +111,7 @@ const QuantityContainer = styled.div`
 
 const SmallButton = styled.button`
   width: 3rem;
+  border: solid 1px #242424;
   padding: 0;
   background-color: transparent;
   border: none;

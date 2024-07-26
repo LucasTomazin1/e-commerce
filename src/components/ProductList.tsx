@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { ProductCard } from "./ProductCard";
-import { fetchProducts } from "../service/api";
+import { getProducts } from "../service/api";
 import styled from "styled-components";
-
+import { SearchContext } from "../contexts/SearchContext";
 interface Product {
   thumbnail: string;
   title: string;
@@ -13,12 +13,13 @@ interface Product {
 
 export const ProductList: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
+  const { query } = useContext(SearchContext);
 
   useEffect(() => {
-    fetchProducts("tudo").then((response) => {
+    getProducts(query).then((response) => {
       setProducts(response);
     });
-  }, []);
+  }, [query]);
 
   console.log(products);
   return (

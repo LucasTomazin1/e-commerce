@@ -1,4 +1,4 @@
-export const fetchProducts = async (query: string) => {
+export const getProducts = async (query: string) => {
     try {
       const response = await fetch(
         `https://api.mercadolibre.com/sites/MLB/search?q=${query}`
@@ -15,7 +15,7 @@ export const fetchProducts = async (query: string) => {
     }
   }
   
-  export const fetchProduct = async (id: string) => {
+  export const getProduct = async (id: string) => {
     try {
       const response = await fetch(`https://api.mercadolibre.com/items/${id}`)
       if (!response.ok) {
