@@ -922,4 +922,4 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     font-size: 1.5rem;
     margin-top: 1rem;
   }
-`,vS=()=>C.jsxs(mx,{children:[C.jsx(yi,{path:"/",element:C.jsx(Hx,{})}),C.jsx(yi,{path:"/details/:id",element:C.jsx(qx,{})}),C.jsx(yi,{path:"/cart/",element:C.jsx(dS,{})})]});function yS(){return C.jsx(C.Fragment,{children:C.jsx(_x,{children:C.jsx(xw,{children:C.jsxs(Sx,{children:[C.jsx(Nx,{}),C.jsx(vS,{})]})})})})}pa.createRoot(document.getElementById("root")).render(C.jsx(yS,{}));
+`,vS=()=>C.jsxs(mx,{children:[C.jsx(yi,{path:"/",element:C.jsx(Hx,{})}),C.jsx(yi,{path:"/details/:id",element:C.jsx(qx,{})}),C.jsx(yi,{path:"/cart",element:C.jsx(dS,{})})]});function yS(){return C.jsx(C.Fragment,{children:C.jsx(_x,{children:C.jsx(xw,{children:C.jsxs(Sx,{basename:"/e-commerce",children:[C.jsx(Nx,{}),C.jsx(vS,{})]})})})})}pa.createRoot(document.getElementById("root")).render(C.jsx(yS,{}));
