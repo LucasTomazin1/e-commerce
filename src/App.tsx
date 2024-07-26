@@ -9,7 +9,7 @@ function App() {
     <>
       <CartProvider>
         <SearchProvider>
-          <Router>
+          <Router basename="/e-commerce">
             <NavBar />
             <AppRoutes />
           </Router>

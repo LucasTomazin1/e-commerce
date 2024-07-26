@@ -8,7 +8,7 @@ export const AppRoutes: React.FC = () => {
     <Routes>
       <Route path="/" element={<ProductList />} />
       <Route path="/details/:id" element={<Product />} />
-      <Route path="/cart/" element={<Cart />} />
+      <Route path="/cart" element={<Cart />} />
     </Routes>
   );
 };
