@@ -9,6 +9,7 @@ export const Button: React.FC<ButtonProps> = ({ children, onClick }) => {
   return <StyledButton onClick={onClick}>{children}</StyledButton>;
 };
 
+
 const StyledButton = styled.button`
   font-family: montserrat, inter, sans-serif;
   font-size: 2rem;

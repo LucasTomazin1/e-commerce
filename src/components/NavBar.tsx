@@ -8,7 +8,7 @@ import { useCart } from "../contexts/CartContext"
 export const NavBar: React.FC = () => {
     //buscando status do carrinho
     const { state } = useCart()
-    const itemCount = state.products.length
+    const itemCount = state.items.length
   return (
     <Container>
       <Nav>

@@ -89,9 +89,14 @@ const Title = styled.h2`
   text-align: center;
   font-size: 1.8rem;
   font-weight: 600;
-  `;
-  
-  const Price = styled.span`
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 5; /* Limita o numero de linhas */
+  -webkit-box-orient: vertical;
+  max-width: 100%;
+`;
+
+const Price = styled.span`
   font-size: 2rem;
   font-weight: 500;
   margin: 1rem;

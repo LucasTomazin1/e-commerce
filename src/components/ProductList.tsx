@@ -15,7 +15,7 @@ export const ProductList: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
-    fetchProducts("celular").then((response) => {
+    fetchProducts("tudo").then((response) => {
       setProducts(response);
     });
   }, []);

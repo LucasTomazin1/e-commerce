@@ -9,18 +9,18 @@ export const Cart: React.FC = () => {
   return (
     <Container>
       <CartItems>
-        {state.products.map((product) => (
-          <CartItem key={product.id} product={product} />
+        {state.items.map((cartItem) => (
+          <CartItem key={cartItem.product.id} product={cartItem.product} quantity={cartItem.quantity} />
         ))}
       </CartItems>
       <ResumeContainer>
         <CartResume>
           <h2>Resumo do Pedido</h2>
-          <p>Total de Itens: {state.products.length}</p>
+          <p>Total de Itens: {state.items.reduce((total, item) => total + item.quantity, 0)}</p>
           <p>
             Valor Total: R${" "}
-            {state.products
-              .reduce((acc, product) => acc + product.price, 0)
+            {state.items
+              .reduce((acc, item) => acc + item.product.price* item.quantity , 0)
               .toFixed(2)}
           </p>
         </CartResume>
