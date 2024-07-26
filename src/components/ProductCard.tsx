@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { Button } from "./Button";
 import { ToMercadoLivre } from "./ToMercadoLivre";
+import { useCart } from "../contexts/CartContext";
 
 interface ProductCardProps {
   image: string;
@@ -19,6 +20,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   id,
   permalink,
 }) => {
+  const { dispatch } = useCart();
+
+  const handleAddToCart = () => {
+    const product = { id, title, price, thumbnail: image, permalink };
+    dispatch({ type: "ADD_TO_CART", product });
+  };
+
   return (
     <>
       <Container>
@@ -33,7 +41,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           <ToMercadoLivre href={permalink} size="1.5rem">
             Comprar Agora
           </ToMercadoLivre>
-          <Button>
+          <Button onClick={handleAddToCart}>
             <FontAwesomeIcon icon={faCartPlus} />
           </Button>
         </ButtonContainer>
@@ -51,7 +59,7 @@ const Container = styled.div`
   background-color: rgba(26, 26, 26, 0.5);
   border-radius: 1rem;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 0.5rem;
 `;
 
 const InfoContainer = styled.div`
@@ -60,7 +68,13 @@ const InfoContainer = styled.div`
   border-radius: 1rem;
   justify-content: space-between;
   height: 100%;
+  transition: ease-in-out 0.3s;
+
+  &:hover {
+    transform: scale(1.03);
+  }
 `;
+
 const StyledLink = styled(Link)`
   display: flex;
   flex-direction: column;
@@ -71,13 +85,16 @@ const StyledLink = styled(Link)`
 `;
 
 const Title = styled.h2`
+  margin: 1rem;
+  text-align: center;
   font-size: 1.8rem;
   font-weight: 600;
-`;
-
-const Price = styled.span`
+  `;
+  
+  const Price = styled.span`
   font-size: 2rem;
   font-weight: 500;
+  margin: 1rem;
   margin-top: auto;
 `;
 

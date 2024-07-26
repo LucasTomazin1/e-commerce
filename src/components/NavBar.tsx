@@ -3,8 +3,12 @@ import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 import { SearchBar } from "./SearchBar";
 import { Link } from "react-router-dom";
+import { useCart } from "../contexts/CartContext"
 
 export const NavBar: React.FC = () => {
+    //buscando status do carrinho
+    const { state } = useCart()
+    const itemCount = state.products.length
   return (
     <Container>
       <Nav>
@@ -15,7 +19,8 @@ export const NavBar: React.FC = () => {
         <Link to="/cart/">
           <Cart>
             <FontAwesomeIcon icon={faCartShopping} />
-            <CardStatus>1</CardStatus>
+            {/* renderiza se o status do cart for maior que 0 */}
+            {itemCount > 0 && <CardStatus>{itemCount}</CardStatus>}
           </Cart>
         </Link>
       </Nav>
@@ -44,6 +49,11 @@ const Cart = styled.div`
   font-size: 2rem;
   position: relative;
   cursor: pointer;
+    transition: ease-in-out 0.3s;
+
+  &:hover {
+    transform: scale(1.03);
+  }
 `;
 
 const CardStatus = styled.span`

@@ -2,10 +2,11 @@ import styled from "styled-components";
 
 interface ButtonProps {
   children: React.ReactNode;
+  onClick?: () => void;
 }
 
-export const Button: React.FC<ButtonProps> = ({ children }) => {
-  return <StyledButton>{children}</StyledButton>;
+export const Button: React.FC<ButtonProps> = ({ children, onClick }) => {
+  return <StyledButton onClick={onClick}>{children}</StyledButton>;
 };
 
 const StyledButton = styled.button`
@@ -16,10 +17,14 @@ const StyledButton = styled.button`
   align-items: center;
   text-align: center;
   justify-content: center;
-  width: 100%;
   padding: 2rem;
   background-color: #333333;
   border: none;
   border-radius: 1rem;
- cursor: pointer;
+  cursor: pointer;
+  transition: ease-in-out 0.3s;
+
+  &:hover {
+    transform: scale(1.03);
+  }
 `;
