@@ -27,7 +27,7 @@ export const ToMercadoLivre: React.FC<ToMercadoLivreProps> = ({
 // noreferrer: Garante que a nova página não recebe informações sobre a URL da página de origem.
 // Quando usados juntos (rel="noopener noreferrer"), eles fornecem uma proteção adicional:
 
-const ToMercadoLivreStyled = styled.a`
+const ToMercadoLivreStyled = styled.a<ToMercadoLivreProps>`
   display: flex;
   align-items: center;
   text-align: center;
