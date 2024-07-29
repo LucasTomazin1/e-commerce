@@ -37,6 +37,7 @@ const Nav = styled.nav`
   justify-content: space-around;
   align-items: center;
   padding: 1rem;
+  border-bottom: 2px solid #202020;
   background-color: #333333;
   color: white;
 

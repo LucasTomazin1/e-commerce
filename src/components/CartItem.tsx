@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useCart } from "../contexts/CartContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 interface Product {
   id: string;
@@ -38,9 +39,13 @@ export const CartItem: React.FC<CartItemProps> = ({ product, quantity }) => {
 
   return (
     <Container>
-      <img src={product.thumbnail} alt={product.title} />
+      <Link to={`/details/${product.id}`}>
+        <img src={product.thumbnail} alt={product.title} />
+      </Link>
       <ItemDetails>
-        <h3>{product.title}</h3>
+        <Link to={`/details/${product.id}`}>
+          <h3>{product.title}</h3>
+        </Link>
         <FlexDetails>
           <AlignPrices>
             <p>R$ {product.price.toFixed(2)}</p>
@@ -97,7 +102,7 @@ const Container = styled.div`
     }
   }
   @media (max-width: 480px) {
-     img {
+    img {
       margin: 0.5rem 0;
     }
   }

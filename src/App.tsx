@@ -1,3 +1,4 @@
+import { Footer } from "./components/Footer";
 import { NavBar } from "./components/NavBar";
 import { CartProvider } from "./contexts/CartContext";
 import { SearchProvider } from "./contexts/SearchContext";
@@ -12,6 +13,7 @@ function App() {
           <Router basename="/e-commerce">
             <NavBar />
             <AppRoutes />
+            <Footer />
           </Router>
         </SearchProvider>
       </CartProvider>

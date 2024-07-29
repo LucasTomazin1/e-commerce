@@ -64,10 +64,10 @@ const Container = styled.section`
     gap: 2rem;
     align-items: center;
     padding: 1.5rem 5rem;
-    }
-    
-    @media (max-width: 320px) {
-        padding: 1rem;
+  }
+
+  @media (max-width: 320px) {
+    padding: 1rem;
   }
 `;
 
@@ -118,6 +118,5 @@ const ButtonContainer = styled.div`
   justify-content: space-between;
   width: 100%;
   gap: 3rem;
-    align-items: center;
-
+  align-items: center;
 `;

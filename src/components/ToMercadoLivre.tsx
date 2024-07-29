@@ -45,12 +45,6 @@ const ToMercadoLivreStyled = styled.a<ToMercadoLivreProps>`
   }
   @media (max-width: 768px) {
     font-size: 1.5rem;
-    padding: 1.4rem;
-    width: 50%;
-  }
-
-  @media (max-width: 480px) {
-    width: 100%;
-
+    padding: 1rem;
   }
 `;
