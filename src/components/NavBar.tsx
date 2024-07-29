@@ -3,12 +3,12 @@ import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 import { SearchBar } from "./SearchBar";
 import { Link } from "react-router-dom";
-import { useCart } from "../contexts/CartContext"
+import { useCart } from "../contexts/CartContext";
 
 export const NavBar: React.FC = () => {
-    //buscando status do carrinho
-    const { state } = useCart()
-    const itemCount = state.items.length
+  //buscando status do carrinho
+  const { state } = useCart();
+  const itemCount = state.items.length;
   return (
     <Container>
       <Nav>
@@ -39,6 +39,7 @@ const Nav = styled.nav`
   padding: 1rem;
   background-color: #333333;
   color: white;
+
 `;
 
 const Logo = styled.div`
@@ -49,7 +50,7 @@ const Cart = styled.div`
   font-size: 2rem;
   position: relative;
   cursor: pointer;
-    transition: ease-in-out 0.3s;
+  transition: ease-in-out 0.3s;
 
   &:hover {
     transform: scale(1.03);

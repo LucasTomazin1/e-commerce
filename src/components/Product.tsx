@@ -58,6 +58,17 @@ const Container = styled.section`
   gap: 10rem;
   justify-content: center;
   padding: 5rem 10rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    padding: 1.5rem 5rem;
+    }
+    
+    @media (max-width: 320px) {
+        padding: 1rem;
+  }
 `;
 
 const ProductContainer = styled.div`
@@ -67,6 +78,15 @@ const ProductContainer = styled.div`
   border-radius: 8px;
   padding: 2rem;
   align-items: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    max-width: 90%;
+    text-align: center;
+  }
+
+  @media (max-width: 480px) {
+  }
 `;
 
 const Title = styled.h2`
@@ -98,4 +118,6 @@ const ButtonContainer = styled.div`
   justify-content: space-between;
   width: 100%;
   gap: 3rem;
+    align-items: center;
+
 `;

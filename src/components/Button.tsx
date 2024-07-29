@@ -9,7 +9,6 @@ export const Button: React.FC<ButtonProps> = ({ children, onClick }) => {
   return <StyledButton onClick={onClick}>{children}</StyledButton>;
 };
 
-
 const StyledButton = styled.button`
   font-family: montserrat, inter, sans-serif;
   font-size: 2rem;
@@ -27,5 +26,15 @@ const StyledButton = styled.button`
 
   &:hover {
     transform: scale(1.03);
+  }
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+    width: 50%;
+    }
+    
+    @media (max-width: 480px) {
+        width: 100%;
+        padding: 1rem 0;
+        font-size: 1.5rem;
   }
 `;

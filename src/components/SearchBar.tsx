@@ -33,9 +33,9 @@ export const SearchBar: React.FC = () => {
         onChange={onChangeHandler}
         onKeyPress={onEnterHandler}
       />
-      <Button onClick={onClickHandler}>
+      <SearchButton onClick={onClickHandler}>
         <FontAwesomeIcon icon={faMagnifyingGlass} />
-      </Button>
+      </SearchButton>
     </Container>
   );
 };
@@ -48,6 +48,19 @@ const Container = styled.div`
   border-radius: 2rem;
   overflow: hidden;
   border: solid 1.5px #1a1a1a;
+
+  @media (max-width: 768px) {
+    width: 35rem;
+    height: 3.5rem;
+  }
+
+  @media (max-width: 480px) {
+    width: 22rem;
+  }
+
+  @media (max-width: 320px) {
+    width: 15rem;
+  }
 `;
 const Input = styled.input`
   width: 100%;
@@ -58,8 +71,23 @@ const Input = styled.input`
   background-color: rgba(26, 26, 26, 0.5);
   padding: 0 1rem;
   outline: none;
+
+    @media (max-width: 768px) {
+    font-size: 1.8rem;
+    padding: 0 0.8rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.5rem;
+    padding: 0 0.6rem;
+  }
+
+  @media (max-width: 320px) {
+    font-size: 1.2rem;
+    padding: 0 0.5rem;
+  }
 `;
-const Button = styled.button`
+const SearchButton = styled.button`
   display: flex;
   height: 100%;
   align-items: center;
@@ -70,4 +98,17 @@ const Button = styled.button`
   border-left-radius: 2rem;
   cursor: pointer;
   outline: none;
+
+
+  @media (max-width: 768px) {
+    padding: 1.2rem 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1rem 1.2rem;
+  }
+
+  @media (max-width: 320px) {
+    padding: 0.8rem 1rem;
+  }
 `;

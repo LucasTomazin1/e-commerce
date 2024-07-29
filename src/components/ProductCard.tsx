@@ -53,7 +53,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 const Container = styled.div`
   padding: 1rem;
   width: 25rem;
-  height: 40rem;
+  height: 100%;
+
   display: flex;
   flex-direction: column;
   background-color: rgba(26, 26, 26, 0.5);
@@ -72,6 +73,10 @@ const InfoContainer = styled.div`
 
   &:hover {
     transform: scale(1.03);
+  }
+
+  @media (max-width: 480px) {
+    flex-direction: column;
   }
 `;
 
@@ -94,6 +99,14 @@ const Title = styled.h2`
   -webkit-line-clamp: 5; /* Limita o numero de linhas */
   -webkit-box-orient: vertical;
   max-width: 100%;
+
+  @media (max-width: 1024px) {
+    font-size: 1.6rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.3rem;
+  }
 `;
 
 const Price = styled.span`
@@ -101,6 +114,22 @@ const Price = styled.span`
   font-weight: 500;
   margin: 1rem;
   margin-top: auto;
+
+  @media (max-width: 1024px) {
+    font-size: 1.8rem;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.6rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.4rem;
+  }
+
+  @media (max-width: 320px) {
+    font-size: 1.2rem;
+  }
 `;
 
 const Image = styled.img`
@@ -108,6 +137,7 @@ const Image = styled.img`
   max-width: 12rem;
   height: auto;
   border-radius: 1rem;
+
 `;
 
 const ButtonContainer = styled.div`

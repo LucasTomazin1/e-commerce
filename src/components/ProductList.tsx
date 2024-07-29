@@ -43,6 +43,13 @@ export const ProductList: React.FC = () => {
 
 const Container = styled.section`
   padding: 5rem 10rem;
+
+  @media(max-width: 768px){
+    padding: 3rem;
+  }
+  @media(max-width: 480px){
+    padding: 1rem;
+  }
 `;
 const List = styled.ul`
   display: flex;

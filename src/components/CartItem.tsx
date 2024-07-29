@@ -42,16 +42,20 @@ export const CartItem: React.FC<CartItemProps> = ({ product, quantity }) => {
       <ItemDetails>
         <h3>{product.title}</h3>
         <FlexDetails>
-          <p>R$ {product.price.toFixed(2)}</p>
-          <p>Total: R$ {(product.price * quantity).toFixed(2)}</p>
-          <QuantityContainer>
-            <SmallButton onClick={handleDecreaseQuantity}>-</SmallButton>
-            <p>{quantity}</p>
-            <SmallButton onClick={handleIncreaseQuantity}>+</SmallButton>
-          </QuantityContainer>
-          <SmallButton onClick={handleRemoveFromCart}>
-            <FontAwesomeIcon icon={faTrash} />
-          </SmallButton>
+          <AlignPrices>
+            <p>R$ {product.price.toFixed(2)}</p>
+            <p>Total: R$ {(product.price * quantity).toFixed(2)}</p>
+          </AlignPrices>
+          <AlignButtons>
+            <QuantityContainer>
+              <SmallButton onClick={handleDecreaseQuantity}>-</SmallButton>
+              <p>{quantity}</p>
+              <SmallButton onClick={handleIncreaseQuantity}>+</SmallButton>
+            </QuantityContainer>
+            <SmallButton onClick={handleRemoveFromCart}>
+              <FontAwesomeIcon icon={faTrash} />
+            </SmallButton>
+          </AlignButtons>
         </FlexDetails>
       </ItemDetails>
     </Container>
@@ -69,6 +73,39 @@ const Container = styled.div`
   img {
     border-radius: 0.5rem;
   }
+
+  @media (max-width: 1024px) {
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    padding: 0.5rem;
+    gap: 0.5rem;
+    align-items: center;
+
+    img {
+      margin: 1rem 0;
+      max-width: 90px;
+      max-height: 90px;
+    }
+  }
+  @media (max-width: 480px) {
+     img {
+      margin: 0.5rem 0;
+    }
+  }
+
+  @media (max-width: 320px) {
+    padding: 0.25rem;
+    gap: 0.25rem;
+  }
 `;
 
 const ItemDetails = styled.div`
@@ -81,6 +118,9 @@ const ItemDetails = styled.div`
   h3 {
     font-size: 1.4rem;
   }
+  @media (max-width: 480px) {
+    text-align: center;
+  }
 `;
 
 const FlexDetails = styled.div`
@@ -92,6 +132,27 @@ const FlexDetails = styled.div`
   p {
     font-size: 1.5rem;
     margin-top: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    p {
+      font-size: 1.2rem;
+    }
+  }
+  @media (max-width: 480px) {
+    flex-direction: column;
+  }
+`;
+
+const AlignPrices = styled.div``;
+
+const AlignButtons = styled.div`
+  display: flex;
+  gap: 1rem;
+  margin: 1rem;
+
+  @media (max-width: 480px) {
+    margin: 0.5rem;
   }
 `;
 
@@ -107,6 +168,10 @@ const QuantityContainer = styled.div`
     margin: 0;
     font-size: 1.2rem;
   }
+
+  @media (max-width: 768px) {
+    gap: 0.7rem;
+  }
 `;
 
 const SmallButton = styled.button`
@@ -121,5 +186,14 @@ const SmallButton = styled.button`
 
   &:hover {
     transform: scale(1.03);
+  }
+  @media (max-width: 1024px) {
+    width: 2.5rem;
+    padding: 0.8rem;
+  }
+
+  @media (max-width: 768px) {
+    width: 2rem;
+    padding: 0.6rem;
   }
 `;

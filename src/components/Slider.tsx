@@ -53,6 +53,21 @@ const SliderContainer = styled.div`
   position: relative;
   width: 50rem;
   height: 50rem;
+
+  @media (max-width: 768px) {
+    width: 40rem;
+    height: 40rem;
+  }
+
+  @media (max-width: 480px) {
+    width: 30rem;
+    height: 30rem;
+  }
+
+  @media (max-width: 320px) {
+    width: 20rem;
+    height: 20rem;
+  }
 `;
 
 const SliderWrapper = styled.div`
