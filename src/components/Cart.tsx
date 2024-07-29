@@ -7,19 +7,32 @@ import { useState } from "react";
 export const Cart: React.FC = () => {
   const { state } = useCart();
   const [showInput, setShowInput] = useState(false);
+  const [coupon, setCoupon] = useState("");
+  const [discount, setDiscount] = useState(0);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handdleCupomInput = () => {
     setShowInput(!showInput);
   };
 
-//   const handleApplyCoupon = () => {
-//     if (coupon !== "") {
-//       setDiscount(0.5); 
-//     } else {
-//       alert("Cupom inválido");
-//       setDiscount(0); 
-//     }
-//   };
+  const handleApplyCoupon = () => {
+    if (coupon !== "") {
+      setDiscount(0.5);
+    } else {
+      setDiscount(0);
+      setErrorMessage("Adicione um cupom válido");
+    }
+  };
+
+  const totalItems = state.items.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
+  const totalValue = state.items.reduce(
+    (acc, item) => acc + item.product.price * item.quantity,
+    0
+  );
+  const discountedValue = totalValue * (1 - discount);
 
   return (
     <Container>
@@ -37,26 +50,20 @@ export const Cart: React.FC = () => {
           <ResumeContainer>
             <CartResume>
               <h2>Resumo do Pedido</h2>
-              <p>
-                Total de Itens:{" "}
-                {state.items.reduce((total, item) => total + item.quantity, 0)}
-              </p>
-              <p>
-                Valor Total: R${" "}
-                {state.items
-                  .reduce(
-                    (acc, item) => acc + item.product.price * item.quantity,
-                    0
-                  )
-                  .toFixed(2)}
-              </p>
+              <p>Total de Itens: {totalItems}</p>
+              <p>Valor Total: R$ {discountedValue.toFixed(2)}</p>
               <AddCupom href="#" onClick={handdleCupomInput}>
                 Adicionar cupom
               </AddCupom>
               {showInput ? (
                 <InputContainer>
-                  <Input type="text" placeholder="Insira o cupom" />
-                  <button>Aplicar</button>
+                  <Input
+                    type="text"
+                    placeholder="Insira o cupom"
+                    onChange={(e) => setCoupon(e.target.value)}
+                  />
+                  <button onClick={handleApplyCoupon}>Aplicar</button>
+                  {errorMessage && <p>{errorMessage}</p>}
                 </InputContainer>
               ) : null}
             </CartResume>
@@ -74,6 +81,7 @@ export const Cart: React.FC = () => {
 
 const AddCupom = styled.a`
   font-size: 1.5rem;
+  text-decoration: underline;
 `;
 
 const InputContainer = styled.div`
