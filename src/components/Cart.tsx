@@ -90,13 +90,14 @@ const InputContainer = styled.div`
     padding: 0.5rem;
     border: none;
     background-color: #242424;
+    margin: 0.5rem;
     border-radius: 0.5rem;
   }
 `;
 
 const Input = styled.input`
   padding: 0.5rem;
-  margin-right: 0.5rem;
+  margin: 0.5rem;
   border: none;
   background-color: #242424;
   border-radius: 0.5rem;
@@ -113,7 +114,7 @@ const Container = styled.section`
   padding: 10rem 15rem;
   display: flex;
   justify-content: space-evenly;
-  min-height: calc(100vh - 8rem);
+  min-height: calc(100vh - 12rem);
 
   @media (max-width: 1024px) {
     padding: 5rem 10rem;

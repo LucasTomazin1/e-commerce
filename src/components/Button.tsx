@@ -11,7 +11,7 @@ export const Button: React.FC<ButtonProps> = ({ children, onClick }) => {
 
 const StyledButton = styled.button`
   font-family: montserrat, inter, sans-serif;
-  font-size: 3rem;
+  font-size: 2rem;
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -30,16 +30,14 @@ const StyledButton = styled.button`
   }
   @media (max-width: 1024px) {
     padding: 1.5rem 0;
-    font-size: 1.6rem;
   }
 
   @media (max-width: 768px) {
-    padding: 1rem 0;
-    font-size: 2rem;
+    font-size: 1.5rem;
+    padding: 1rem;
   }
 
   @media (max-width: 480px) {
     padding: 1.5rem 1rem;
-
   }
 `;

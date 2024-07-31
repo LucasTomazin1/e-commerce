@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { ProductCard } from "./ProductCard";
-import { getProducts } from "../service/api";
+import { getProducts, getProduct } from "../service/api";
 import styled from "styled-components";
 import { SearchContext } from "../contexts/SearchContext";
 interface Product {
@@ -29,7 +29,7 @@ export const ProductList: React.FC = () => {
           <li key={index}>
             <ProductCard
               id={product.id}
-              image={product.thumbnail}
+              thumbnail={product.thumbnail}
               title={product.title}
               price={product.price}
               permalink={product.permalink}

@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartPlus } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "./Button";
 import { ToMercadoLivre } from "./ToMercadoLivre";
+import { useCart } from "../contexts/CartContext";
 
 interface ProductData {
   id: string;
@@ -21,6 +22,7 @@ interface ProductData {
 export const Product: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const [product, setProduct] = useState<ProductData | null>(null);
+  const { dispatch } = useCart();
 
   useEffect(() => {
     if (id) {
@@ -29,6 +31,21 @@ export const Product: React.FC = () => {
   }, [id]);
 
   if (!product) return <div>Loading...</div>;
+
+  const handleAddToCart = () => {
+    if(product) {
+        dispatch({
+            type: "ADD_TO_CART",
+            product: {
+                id: product.id,
+                title: product.title,
+                price: product.price,
+                thumbnail: product.pictures[0].url,
+                permalink: product.permalink,  
+            },
+        })
+    }
+  }
 
   return (
     <Container>
@@ -42,7 +59,7 @@ export const Product: React.FC = () => {
           <ToMercadoLivre href={product.permalink}>
             Ver no Mercado Livre
           </ToMercadoLivre>
-          <Button>
+          <Button onClick={handleAddToCart}>
             <FontAwesomeIcon icon={faCartPlus} />
             Adicionar ao carrinho
           </Button>

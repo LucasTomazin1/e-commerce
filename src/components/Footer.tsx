@@ -6,7 +6,6 @@ export const Footer: React.FC = () => {
  
   return (
     <Container>
-      <span>Designed and coded by Lucas Tomazini</span>
       <SocialLinks>
         <li>
           <a
@@ -27,14 +26,15 @@ export const Footer: React.FC = () => {
           </a>
         </li>
       </SocialLinks>
-    </Container>
+      <span>Designed and coded by Lucas Tomazini</span>
+      </Container>
   );
 };
 
 const Container = styled.footer`
   display: flex;
   flex-direction: column;
-  height: 10rem;
+  height: 12rem;
   border-top: 2px solid #202020;
   align-items: center;
   justify-content: center;

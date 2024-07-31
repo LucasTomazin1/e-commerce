@@ -74,7 +74,7 @@ const SliderWrapper = styled.div`
   display: flex;
   width: 100%;
   height: 100%;
-  transition: all 1s ease-in-out;
+  transition: transform 0.5s ease-in-out;
 `;
 
 const Slide = styled.div`

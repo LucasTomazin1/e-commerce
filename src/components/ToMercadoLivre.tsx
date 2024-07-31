@@ -43,6 +43,9 @@ const ToMercadoLivreStyled = styled.a<ToMercadoLivreProps>`
   &:hover {
     transform: scale(1.03);
   }
+  @media (max-width: 1024px) {
+    padding: 1.5rem;
+  }
   @media (max-width: 768px) {
     font-size: 1.5rem;
     padding: 1rem;

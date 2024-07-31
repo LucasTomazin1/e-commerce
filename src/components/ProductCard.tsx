@@ -7,14 +7,14 @@ import { ToMercadoLivre } from "./ToMercadoLivre";
 import { useCart } from "../contexts/CartContext";
 
 interface ProductCardProps {
-  image: string;
+  thumbnail: string;
   title: string;
   price: number;
   id: string;
   permalink: string;
 }
 export const ProductCard: React.FC<ProductCardProps> = ({
-  image,
+  thumbnail,
   price,
   title,
   id,
@@ -23,7 +23,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   const { dispatch } = useCart();
 
   const handleAddToCart = () => {
-    const product = { id, title, price, thumbnail: image, permalink };
+    const product = { id, title, price, thumbnail: thumbnail, permalink };
     dispatch({ type: "ADD_TO_CART", product });
   };
 
@@ -32,7 +32,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       <Container>
         <InfoContainer>
           <StyledLink to={`/details/${id}`}>
-            <Image src={image} />
+            <Image src={thumbnail} />
             <Title>{title}</Title>
             <Price>R$ {price.toFixed(2)}</Price>
           </StyledLink>
@@ -42,13 +42,21 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             Comprar Agora
           </ToMercadoLivre>
           <Button onClick={handleAddToCart}>
-            <FontAwesomeIcon icon={faCartPlus} />
+            <StyledIcon icon={faCartPlus} />
           </Button>
         </ButtonContainer>
       </Container>
     </>
   );
 };
+
+const StyledIcon = styled(FontAwesomeIcon)`
+    font-size: 3rem;
+    @media (max-width: 768px){
+        font-size: 2.5rem;
+    
+    }
+`;
 
 const Container = styled.div`
   padding: 1rem;
@@ -137,7 +145,6 @@ const Image = styled.img`
   max-width: 12rem;
   height: auto;
   border-radius: 1rem;
-
 `;
 
 const ButtonContainer = styled.div`
