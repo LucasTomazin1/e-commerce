@@ -856,22 +856,25 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     padding: 1rem;
   }
 `,b2=async e=>{try{const t=await fetch(`https://api.mercadolibre.com/sites/MLB/search?q=${e}`);if(!t.ok)throw new Error("Network response was not ok");const n=await t.json();return console.log("fetchProducts",n),n.results}catch(t){return console.log("Error fetching products",t),[]}},Lh=async e=>{try{const t=await fetch(`https://api.mercadolibre.com/items/${e}`);if(!t.ok)throw new Error("Network response was not ok");const n=await t.json();return console.log("fetchProduct",n),n}catch(t){return console.log("Error fetching product",t),null}},B2=({thumbnail:e,price:t,title:n,id:r,permalink:i})=>{const[o,l]=_.useState(null),{dispatch:a}=Ii(),s=()=>{a({type:"ADD_TO_CART",product:{id:r,title:n,price:t,thumbnail:e,permalink:i}})};_.useEffect(()=>{r&&Lh(r).then(l)},[r]);const u=o!=null&&o.pictures&&o.pictures.length>0?o.pictures[0].url:e;return w.jsx(w.Fragment,{children:w.jsxs(V2,{children:[w.jsx(H2,{children:w.jsxs(Y2,{to:`/details/${r}`,children:[w.jsx(K2,{src:u,alt:n}),w.jsx(Q2,{children:n}),w.jsxs(G2,{children:["R$ ",t.toFixed(2)]})]})}),w.jsxs(X2,{children:[w.jsx(jh,{href:i,size:"1.5rem",children:"Comprar Agora"}),w.jsx(Qu,{onClick:s,children:w.jsx(W2,{icon:Sh})})]})]})})},W2=R(tt)`
-    font-size: 3rem;
-    @media (max-width: 768px){
-        font-size: 2.5rem;
-    
-    }
+  font-size: 3rem;
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+  }
 `,V2=R.div`
   padding: 1rem;
   width: 35rem;
   height: 100%;
-
   display: flex;
   flex-direction: column;
   background-color: rgba(26, 26, 26, 0.5);
   border-radius: 1rem;
   justify-content: space-between;
   gap: 0.5rem;
+
+  @media (max-width: 768px) {
+    width: 25rem;
+  }
+
 `,H2=R.div`
   background-color: #333333;
   display: flex;
@@ -939,6 +942,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   width: auto;
   height: 20rem;
   object-fit: contain;
+
+  @media (max-width: 768px) {
+    max-width: 20rem;
+    height: 15rem;
+  }
 `,X2=R.div`
   display: flex;
   text-align: center;
