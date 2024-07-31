@@ -33,23 +33,25 @@ export const Product: React.FC = () => {
   if (!product) return <div>Loading...</div>;
 
   const handleAddToCart = () => {
-    if(product) {
-        dispatch({
-            type: "ADD_TO_CART",
-            product: {
-                id: product.id,
-                title: product.title,
-                price: product.price,
-                thumbnail: product.pictures[0].url,
-                permalink: product.permalink,  
-            },
-        })
+    if (product) {
+      dispatch({
+        type: "ADD_TO_CART",
+        product: {
+          id: product.id,
+          title: product.title,
+          price: product.price,
+          thumbnail: product.pictures[0].url,
+          permalink: product.permalink,
+        },
+      });
     }
-  }
+  };
 
   return (
     <Container>
-      <Slider pictures={product.pictures} />
+      <SliderContainer>
+        <Slider pictures={product.pictures} />
+      </SliderContainer>
       <ProductContainer>
         <Title>{product.title}</Title>
         <Condition>{product.condition === "new" ? "Novo" : "Usado"}</Condition>
@@ -85,6 +87,26 @@ const Container = styled.section`
 
   @media (max-width: 320px) {
     padding: 1rem;
+  }
+`;
+
+const SliderContainer = styled.div`
+  width: 50rem;
+  height: 50rem;
+
+    @media (max-width: 768px) {
+    width: 40rem;
+    height: 40rem;
+  }
+
+  @media (max-width: 480px) {
+    width: 30rem;
+    height: 30rem;
+  }
+
+  @media (max-width: 320px) {
+    width: 20rem;
+    height: 20rem;
   }
 `;
 

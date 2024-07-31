@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { Button } from "./Button";
 import { ToMercadoLivre } from "./ToMercadoLivre";
 import { useCart } from "../contexts/CartContext";
+import { useEffect, useState } from "react";
+import { getProduct } from "../service/api";
 
 interface ProductCardProps {
   thumbnail: string;
@@ -13,6 +15,11 @@ interface ProductCardProps {
   id: string;
   permalink: string;
 }
+
+interface ProductData {
+    pictures: { url: string }[];
+  }
+  
 export const ProductCard: React.FC<ProductCardProps> = ({
   thumbnail,
   price,
@@ -20,19 +27,26 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   id,
   permalink,
 }) => {
+  const [productData, setProductData] = useState<ProductData | null>(null);
   const { dispatch } = useCart();
 
   const handleAddToCart = () => {
     const product = { id, title, price, thumbnail: thumbnail, permalink };
     dispatch({ type: "ADD_TO_CART", product });
   };
-
+  
+  useEffect(() => {
+    if (id) {
+      getProduct(id).then(setProductData);
+    }
+  }, [id]);
+  const productImage = productData?.pictures && productData.pictures.length > 0 ? productData.pictures[0].url : thumbnail
   return (
     <>
       <Container>
         <InfoContainer>
           <StyledLink to={`/details/${id}`}>
-            <Image src={thumbnail} />
+            <Image src={productImage} alt={title}  />
             <Title>{title}</Title>
             <Price>R$ {price.toFixed(2)}</Price>
           </StyledLink>
@@ -60,7 +74,7 @@ const StyledIcon = styled(FontAwesomeIcon)`
 
 const Container = styled.div`
   padding: 1rem;
-  width: 25rem;
+  width: 35rem;
   height: 100%;
 
   display: flex;
@@ -142,9 +156,10 @@ const Price = styled.span`
 
 const Image = styled.img`
   margin: 1rem;
-  max-width: 12rem;
-  height: auto;
-  border-radius: 1rem;
+  max-width: 30rem;
+  width: auto;
+  height: 20rem;
+  object-fit: contain;
 `;
 
 const ButtonContainer = styled.div`

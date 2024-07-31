@@ -3,7 +3,7 @@ import {
   faChevronLeft,
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
-import React, { useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 
 interface SliderProps {
@@ -31,14 +31,12 @@ export const Slider: React.FC<SliderProps> = ({ pictures }) => {
   console.log(currentIndex);
   return (
     <SliderContainer>
-      <SliderWrapper>
-        <Slide>
-          <Image
-            src={pictures[currentIndex].url}
-            alt={`Slide ${currentIndex + 1}`}
-          />
-        </Slide>
-      </SliderWrapper>
+      <Slide>
+        <Image
+          src={pictures[currentIndex].url}
+          alt={`Slide ${currentIndex + 1}`}
+        />
+      </Slide>
       <NavButton onClick={prevSlide}>
         <FontAwesomeIcon icon={faChevronLeft} />
       </NavButton>
@@ -51,30 +49,8 @@ export const Slider: React.FC<SliderProps> = ({ pictures }) => {
 
 const SliderContainer = styled.div`
   position: relative;
-  width: 50rem;
-  height: 50rem;
-
-  @media (max-width: 768px) {
-    width: 40rem;
-    height: 40rem;
-  }
-
-  @media (max-width: 480px) {
-    width: 30rem;
-    height: 30rem;
-  }
-
-  @media (max-width: 320px) {
-    width: 20rem;
-    height: 20rem;
-  }
-`;
-
-const SliderWrapper = styled.div`
-  display: flex;
   width: 100%;
   height: 100%;
-  transition: transform 0.5s ease-in-out;
 `;
 
 const Slide = styled.div`
