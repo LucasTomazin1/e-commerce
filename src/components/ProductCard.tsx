@@ -17,9 +17,9 @@ interface ProductCardProps {
 }
 
 interface ProductData {
-    pictures: { url: string }[];
-  }
-  
+  pictures: { url: string }[];
+}
+
 export const ProductCard: React.FC<ProductCardProps> = ({
   thumbnail,
   price,
@@ -34,19 +34,22 @@ export const ProductCard: React.FC<ProductCardProps> = ({
     const product = { id, title, price, thumbnail: thumbnail, permalink };
     dispatch({ type: "ADD_TO_CART", product });
   };
-  
+
   useEffect(() => {
     if (id) {
       getProduct(id).then(setProductData);
     }
   }, [id]);
-  const productImage = productData?.pictures && productData.pictures.length > 0 ? productData.pictures[0].url : thumbnail
+  const productImage =
+    productData?.pictures && productData.pictures.length > 0
+      ? productData.pictures[0].url
+      : thumbnail;
   return (
     <>
       <Container>
         <InfoContainer>
           <StyledLink to={`/details/${id}`}>
-            <Image src={productImage} alt={title}  />
+            <Image src={productImage} alt={title} />
             <Title>{title}</Title>
             <Price>R$ {price.toFixed(2)}</Price>
           </StyledLink>
@@ -65,24 +68,27 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 };
 
 const StyledIcon = styled(FontAwesomeIcon)`
-    font-size: 3rem;
-    @media (max-width: 768px){
-        font-size: 2.5rem;
-    
-    }
+  font-size: 3rem;
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+  }
 `;
 
 const Container = styled.div`
   padding: 1rem;
   width: 35rem;
   height: 100%;
-
   display: flex;
   flex-direction: column;
   background-color: rgba(26, 26, 26, 0.5);
   border-radius: 1rem;
   justify-content: space-between;
   gap: 0.5rem;
+
+  @media (max-width: 768px) {
+    width: 25rem;
+  }
+
 `;
 
 const InfoContainer = styled.div`
@@ -160,6 +166,11 @@ const Image = styled.img`
   width: auto;
   height: 20rem;
   object-fit: contain;
+
+  @media (max-width: 768px) {
+    max-width: 20rem;
+    height: 15rem;
+  }
 `;
 
 const ButtonContainer = styled.div`
